@@ -1,5 +1,6 @@
 import React from 'react/addons';
 import {Navigation} from 'react-router';
+import SignInActions from '../actions/sign-in';
 
 export default React.createClass({
   mixins: [Navigation, React.addons.LinkedStateMixin],
@@ -48,6 +49,7 @@ export default React.createClass({
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    SignInActions.authenticate(this.state.email, this.state.password);
+    this.replaceState(this.getInitialState());
   }
 });

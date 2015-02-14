@@ -6,6 +6,7 @@ import Firebase from 'firebase';
 import React from 'react';
 import {run} from 'react-router';
 import routes from './routes';
+import './stores/authentication';
 
 run(routes, // HistoryLocation,
   function (Handler, state) {
