@@ -66,14 +66,14 @@ export default React.createClass({
     this.setState({formDisabled: true});
   },
 
-  onAuthenticationResult(success, errorMessage) {
+  onAuthenticationResult(success, info) {
     if (success) {
-      this.transitionTo('main-layout', {email: this.state.email});
+      this.transitionTo('main-layout', {uid: info.uid});
     } else {
       this.setState({
         formDisabled: false,
         password: null,
-        errorMessage: errorMessage
+        errorMessage: info.errorMessage
       });
     }
   },

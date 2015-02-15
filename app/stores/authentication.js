@@ -11,9 +11,9 @@ export default Reflux.createStore({
   onAuthenticate(email, password) {
     ref.authWithPassword({email, password}, (error, authData) => {
       if (error) {
-        this.trigger(false, error.message);
+        this.trigger(false, {errorMessage: error.message});
       } else {
-        this.trigger(true);
+        this.trigger(true, {uid: authData.uid});
       }
     });
   }

@@ -9,7 +9,7 @@ export default React.createClass({
 
     return (
       <div className="main-layout">
-        <h1>Welcome {params.email}</h1>
+        <h1>Welcome {params.uid}</h1>
         <RouteHandler {...this.props} />
       </div>
     );
