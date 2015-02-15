@@ -68,7 +68,7 @@ export default React.createClass({
 
   onAuthenticationResult(success, errorMessage) {
     if (success) {
-      debugger;
+      this.transitionTo('main-layout', {email: this.state.email});
     } else {
       this.setState({
         formDisabled: false,
