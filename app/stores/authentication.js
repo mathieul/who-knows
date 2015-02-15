@@ -11,9 +11,9 @@ export default Reflux.createStore({
   onAuthenticate(email, password) {
     ref.authWithPassword({email, password}, (error, authData) => {
       if (error) {
-        console.log("Login Failed!", error);
+        this.trigger(false, error.message);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        this.trigger(true);
       }
     });
   }

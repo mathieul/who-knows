@@ -41,4 +41,15 @@
     padding-top: $vertical-spacing * 1;
     padding-bottom: $vertical-spacing * 2;
   }
+
+  .message-container {
+    @include make-row;
+  }
+
+  .error-message {
+    @extend .alert;
+    @extend .alert-warning;
+    @extend .col-sm-offset-4;
+    @extend .col-sm-4;
+  }
 }
