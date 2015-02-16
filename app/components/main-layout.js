@@ -1,10 +1,14 @@
 import React from 'react';
 import {Navigation, RouteHandler} from 'react-router';
+import Reflux from 'reflux';
 import authenticationStore from '../stores/authentication';
-import NavigationBar from './navigation-bar';
+import NavigationBar from './navigation/bar';
 
 export default React.createClass({
-  mixins: [Navigation],
+  mixins: [
+    Navigation,
+    Reflux.listenTo(authenticationStore, 'onAuthenticationChange')
+  ],
 
   getInitialState() {
     if (!authenticationStore.isAuthenticated()) {
@@ -23,5 +27,11 @@ export default React.createClass({
         <RouteHandler {...this.props} />
       </div>
     );
+  },
+
+  onAuthenticationChange(authenticated) {
+    if (authenticated === false) {
+      this.transitionTo('sign-in');
+    }
   }
 });

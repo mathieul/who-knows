@@ -1,18 +1,18 @@
 import Reflux from 'reflux';
 import Firebase from 'firebase';
-import SignInActions from '../actions/sign-in';
+import AuthenticationActions from '../actions/authentication';
 
 let baseUrl = 'https://who-knows.firebaseio.com';
 let ref     = new Firebase(baseUrl);
 
 export default Reflux.createStore({
-  listenables: [SignInActions],
+  listenables: [AuthenticationActions],
 
   isAuthenticated() {
     return !!ref.getAuth();
   },
 
-  onAuthenticate(email, password) {
+  onSignIn(email, password) {
     ref.authWithPassword({email, password}, (error, authData) => {
       if (error) {
         this.trigger(false, {errorMessage: error.message});
@@ -20,5 +20,10 @@ export default Reflux.createStore({
         this.trigger(true, {uid: authData.uid});
       }
     });
+  },
+
+  onSignOut() {
+    ref.unauth();
+    this.trigger(false);
   }
 });

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router';
-import NavigationLink from './navigation-link';
+import Link from './link';
+import AuthenticationActions from '../../actions/authentication';
 
 export default React.createClass({
   render() {
@@ -8,7 +8,7 @@ export default React.createClass({
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <ul className="nav navbar-nav">
-            <NavigationLink to="main-layout">Main</NavigationLink>
+            <Link to="main-layout">Main</Link>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><a href onClick={this.handleSignOut}>Sign Out</a></li>
@@ -20,6 +20,6 @@ export default React.createClass({
 
   handleSignOut(event) {
     event.preventDefault();
-    alert('sign-out!');
+    AuthenticationActions.signOut();
   }
 });

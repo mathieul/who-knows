@@ -1,14 +1,14 @@
 import React from 'react/addons';
 import {Navigation} from 'react-router';
 import Reflux from 'reflux';
-import SignInActions from '../actions/sign-in';
+import AuthenticationActions from '../actions/authentication';
 import authenticationStore from '../stores/authentication';
 
 export default React.createClass({
   mixins: [
     Navigation,
     React.addons.LinkedStateMixin,
-    Reflux.listenTo(authenticationStore, 'onAuthenticationResult')
+    Reflux.listenTo(authenticationStore, 'onAuthenticationChange')
   ],
 
   getInitialState() {
@@ -62,12 +62,12 @@ export default React.createClass({
 
   handleSubmit(event) {
     event.preventDefault();
-    SignInActions.authenticate(this.state.email, this.state.password);
+    AuthenticationActions.signIn(this.state.email, this.state.password);
     this.setState({formDisabled: true});
   },
 
-  onAuthenticationResult(success, info) {
-    if (success) {
+  onAuthenticationChange(authenticated, info = {}) {
+    if (authenticated) {
       this.transitionTo('main-layout');
     } else {
       this.setState({
