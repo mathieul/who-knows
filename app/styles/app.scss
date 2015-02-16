@@ -1,3 +1,7 @@
 @import "bootstrap";
 @import "sign-in";
 @import "main-layout";
+
+html, body {
+  height: 100%;
+}

@@ -1,13 +1,25 @@
+.content-wrapper {
+  @extend .container-fluid;
+}
+
 .side-bar {
-  @extend .col-sm-2;
+  @extend .col-sm-4;
 }
 
 .main-content {
-  @extend .col-sm-10;
+  @extend .col-sm-8;
 }
 
 .note {
   textarea {
     width: 100%;
+    min-height: 30rem;
+  }
+
+  .message {
+    @extend .text-muted;
+    @extend .text-center;
+    margin-top: 10rem;
+    font-size: 18px;
   }
 }

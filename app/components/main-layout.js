@@ -4,7 +4,7 @@ import Reflux from 'reflux';
 import authenticationStore from '../stores/authentication';
 import NavigationBar from './navigation/bar';
 import NoteList from './note-list';
-import Note from './note';
+import NoteBody from './note-body';
 
 export default React.createClass({
   mixins: [
@@ -23,12 +23,12 @@ export default React.createClass({
     return (
       <div className="main-layout">
         <NavigationBar />
-        <div className="container-fluid">
+        <div className="content-wrapper">
           <div className="side-bar">
             <NoteList />
           </div>
           <div className="main-content">
-            <Note />
+            <NoteBody />
           </div>
         </div>
         <RouteHandler {...this.props} />
