@@ -1,0 +1,13 @@
+.side-bar {
+  @extend .col-sm-2;
+}
+
+.main-content {
+  @extend .col-sm-10;
+}
+
+.note {
+  textarea {
+    width: 100%;
+  }
+}
