@@ -8,6 +8,10 @@ let ref     = new Firebase(baseUrl);
 export default Reflux.createStore({
   listenables: [SignInActions],
 
+  isAuthenticated() {
+    return !!ref.getAuth();
+  },
+
   onAuthenticate(email, password) {
     ref.authWithPassword({email, password}, (error, authData) => {
       if (error) {

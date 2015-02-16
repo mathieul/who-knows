@@ -5,7 +5,8 @@ import MainLayout from './components/main-layout';
 
 export default (
   <Route handler={RouteHandler}>
-    <Route name="main-layout" path=":uid" handler={MainLayout} />
-    <DefaultRoute handler={SignIn} />
+    <Route name="sign-in" handler={SignIn} />
+    <Route name="main-layout" path="/" handler={MainLayout} />
+    <DefaultRoute handler={MainLayout} />
   </Route>
 );

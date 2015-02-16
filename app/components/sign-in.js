@@ -68,7 +68,7 @@ export default React.createClass({
 
   onAuthenticationResult(success, info) {
     if (success) {
-      this.transitionTo('main-layout', {uid: info.uid});
+      this.transitionTo('main-layout');
     } else {
       this.setState({
         formDisabled: false,
